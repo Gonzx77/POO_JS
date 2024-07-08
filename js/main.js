@@ -1,24 +1,18 @@
-class Persona{
+class Animal{
     #nombre;
     #edad;
-    #sexo;
 
     constructor (nombre, edad, sexo){
         this.#nombre = nombre;
         this.#edad = edad;
-        this.#sexo = sexo;
     }
+
 
     get getNombre(){
         return this.#nombre;
     }
-
-    get esMayorEdad(){
-        if (this.#edad >= 18){
-            return true;
-        }else{
-            return false;
-        }
+    get getSonido(){
+        return "guau guau";
     }
 
 
@@ -27,16 +21,17 @@ class Persona{
     }
 }
 
-class Estudiante extends Persona {
-    #carrera;
 
-    constructor(nombre, edad, sexo, carrera) {
-        super(nombre, edad, sexo)
-        this.#carrera = carrera;
+class Raza extends Animal {
+    #raza;
+
+    constructor(nombre, edad, raza) {
+        super(nombre, edad)
+        this.#raza = raza;
     }
 
-    estudiar() {
-        return `${this.getNombre} está estudiando ${this.#carrera}`;
+    moverCola() {
+        return `${this.getNombre} es un ${this.#raza} y esta moviendo la cola !`;
     }
 }
 
@@ -54,13 +49,12 @@ let btn = document.querySelector("#btn");
 btn.addEventListener("click", function(){
     let nombre = document.querySelector("#name").value;
     let edad = document.querySelector("#age").value;
-    let sexo = document.querySelector("#sex").value;
-    let carrera = document.querySelector("#job").value;
+    let raza = document.querySelector("#raza").value;
 
-    let persona1 = new Persona(nombre, edad, sexo);
-    let estudiante1 = new Estudiante(nombre, edad, sexo, carrera);
+    let animal1 = new Animal(nombre, edad);
+    let raza1 = new Raza(nombre, edad, raza);
 
-    console.log(persona1.saludar());
-    console.log(estudiante1.estudiar());
-    console.log(`¿Mayor de edad?: ${estudiante1.esMayorEdad}`);
+    console.log(animal1.saludar());
+    console.log(animal1.getSonido);
+    console.log(raza1.moverCola());
 })
