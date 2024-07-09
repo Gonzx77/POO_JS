@@ -1,8 +1,4 @@
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100vw;
 }
@@ -10,6 +6,16 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.mainGrid{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100vw;
+    height: 100vh;
+}
+.section{
+    border: 1px solid #323232;
 }
 
 .formularioDiv{
@@ -20,6 +26,34 @@ body{
     background-color: #323232;
     width: 500px;
     height: 600px;
+}
+#center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.menuElement{
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    margin: 10px;
+    width: calc((100% -10px)/2);
+    height: 40px;
+    border: 1px solid #323232;
+    background-color: #ffffff;
+}
+.menuElement:hover{
+    background-color: #dddddd;
 }
 
 #title{
