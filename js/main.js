@@ -20,20 +20,6 @@ class Figura{
 }
 
 
-class Circulo extends Figura {
-    #radio;
-
-    constructor(color, radio) {
-        super(color)
-        this.#radio = radio;
-    }
-
-    calcularArea(){
-        let area = (Math.PI * (this.#radio**2));
-        return `El radio del circulo es (π·${this.#radio}²) = ${area}m²`;
-    }
-}
-
 class Rectangulo extends Figura {
     #largo;
     #ancho;
@@ -45,10 +31,10 @@ class Rectangulo extends Figura {
     }
 
     calcularArea(){
-        return true;
+        let area = this.#largo * this.#ancho;
+        return `El area del rectangulo es (${this.#ancho}·${this.#largo}) = ${area}m²`;
     }
 }
-
 
 
 
@@ -62,13 +48,13 @@ let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", function(){
     let color = document.querySelector("#color").value;
-    let radio = document.querySelector("#radio").value;
+    let ancho = document.querySelector("#ancho").value;
+    let largo = document.querySelector("#largo").value;
 
     let figura1 = new Figura(color);
-    let circulo1 = new Circulo(color, radio);
     let rectangulo1 = new Rectangulo(color, largo, ancho)
 
     resultDiv.innerHTML = "";
     resultDiv.innerHTML += `${figura1.calcularArea()}<br>`;
-    resultDiv.innerHTML += `${circulo1.calcularArea()}<br>`;
+    resultDiv.innerHTML += `${rectangulo1.calcularArea()}<br>`;
 })
