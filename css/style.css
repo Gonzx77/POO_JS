@@ -1,5 +1,6 @@
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -37,4 +38,15 @@ body{
     margin-bottom: 20px;
     position: absolute;
     width: 100px;
+}
+
+#resultDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    margin-top: 20px;
+    border: 1px solid #323232;
+    width: 500px;
+    height: 100px;
 }

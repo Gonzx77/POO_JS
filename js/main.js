@@ -1,37 +1,51 @@
-class Animal{
-    #nombre;
-    #edad;
+let resultDiv = document.querySelector("#resultDiv");
 
-    constructor (nombre, edad, sexo){
-        this.#nombre = nombre;
-        this.#edad = edad;
+class Figura{
+    #color;
+    #area;
+
+    constructor (color){
+        this.#color = color;
     }
 
 
-    get getNombre(){
-        return this.#nombre;
-    }
-    get getSonido(){
-        return "guau guau";
+    get getColor(){
+        return this.#color;
     }
 
 
-    saludar(){
-        return `Hola ${this.#nombre}`;
+    calcularArea(){
+        return `El color de la figura es ${this.#color}`;
     }
 }
 
 
-class Raza extends Animal {
-    #raza;
+class Circulo extends Figura {
+    #radio;
 
-    constructor(nombre, edad, raza) {
-        super(nombre, edad)
-        this.#raza = raza;
+    constructor(color, radio) {
+        super(color)
+        this.#radio = radio;
     }
 
-    moverCola() {
-        return `${this.getNombre} es un ${this.#raza} y esta moviendo la cola !`;
+    calcularArea(){
+        let area = (Math.PI * (this.#radio**2));
+        return `El radio del circulo es (π·${this.#radio}²) = ${area}m²`;
+    }
+}
+
+class Rectangulo extends Figura {
+    #largo;
+    #ancho;
+
+    constructor(color, largo, ancho) {
+        super(color)
+        this.#largo = largo;
+        this.#ancho = ancho;
+    }
+
+    calcularArea(){
+        return true;
     }
 }
 
@@ -47,14 +61,14 @@ class Raza extends Animal {
 let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", function(){
-    let nombre = document.querySelector("#name").value;
-    let edad = document.querySelector("#age").value;
-    let raza = document.querySelector("#raza").value;
+    let color = document.querySelector("#color").value;
+    let radio = document.querySelector("#radio").value;
 
-    let animal1 = new Animal(nombre, edad);
-    let raza1 = new Raza(nombre, edad, raza);
+    let figura1 = new Figura(color);
+    let circulo1 = new Circulo(color, radio);
+    let rectangulo1 = new Rectangulo(color, largo, ancho)
 
-    console.log(animal1.saludar());
-    console.log(animal1.getSonido);
-    console.log(raza1.moverCola());
+    resultDiv.innerHTML = "";
+    resultDiv.innerHTML += `${figura1.calcularArea()}<br>`;
+    resultDiv.innerHTML += `${circulo1.calcularArea()}<br>`;
 })
