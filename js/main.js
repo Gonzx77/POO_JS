@@ -269,3 +269,6 @@ let ejercicio1 = async() =>{
     resultDiv.innerHTML += `¿Mayor de edad?: ${estudiante1.esMayorEdad}<br>`;
 }
 document.ejercicio1 = ejercicio1;
+
+
+openEjercicio1();
