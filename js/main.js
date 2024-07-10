@@ -5,7 +5,7 @@ let openEjercicio1 = async() =>{
     <div class="formularioDiv">
         <h1 id="title">Formulario</h1>
         <input id="name" class="inputText" type="text" placeholder="Nombre...">
-        <input id="age" class="inputText" type="text" placeholder="Edad...">
+        <input id="age" class="inputText" type="number" placeholder="Edad...">
         <input id="sex" class="inputText" type="text" placeholder="Sexo...">
         <input id="job" class="inputText" type="text" placeholder="Carrera...">
 
@@ -234,7 +234,7 @@ let ejercicio3 = async() =>{
     resultDiv.innerHTML += `${circulo1.calcularArea()}<br>`;
 }
 
-document.ejercicio2 = ejercicio3;
+document.ejercicio3 = ejercicio3;
 let ejercicio2 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
 
