@@ -72,6 +72,26 @@ let openEjercicio4 = async() =>{
 }
 document.openEjercicio4 = openEjercicio4;
 
+let openEjercicio5 = async() =>{
+    let plantilla = `
+    <div class="formularioDiv">
+        <h1 id="title">Formulario</h1>
+        <input id="marca" class="inputText" type="text" placeholder="Marca...">
+        <input id="modelo" class="inputText" type="text" placeholder="Modelo...">
+        <input id="velocidad" class="inputText" type="number" placeholder="Velocidad (Km/h)...">
+        <input id="combustible" class="inputText" type="number" placeholder="Combustible (L)...">
+
+
+        <button onclick="ejercicio5()" id="btn">Registrar</button>
+    </div>
+    <div id="resultDiv">
+        
+    </div>`;
+
+    formulario.innerHTML = plantilla;
+}
+document.openEjercicio5 = openEjercicio5;
+
 
 
 
@@ -186,7 +206,6 @@ class Persona{
         return `Hola ${this.#nombre}<br>`;
     }
 }
-
 class Estudiante extends Persona {
     #carrera;
 
@@ -201,9 +220,69 @@ class Estudiante extends Persona {
 }
 
 
+class Vehiculo{
+    #marca;
+    #modelo;
+    #velocidad;
+
+    constructor(marca, modelo, velocidad){
+        this.#marca = marca;
+        this.#modelo = modelo;
+        this.#velocidad = velocidad;
+    }
+
+    get getVelocidad(){
+        return this.#velocidad;
+    }
+
+    acelerar(){
+        return parseFloat(this.#velocidad) + 10 + " Km/h <br>";
+    }
+    convertirKmHEnMph(){
+        let kmh = parseFloat(this.#velocidad);
+        let mph = kmh / 1.60934;
+        return `${kmh} Km/h = ${mph} MPH <br>`;
+    }
+}
+class Coche extends Vehiculo {
+    #combustible;
+
+    constructor(marca, modelo, velocidad, combustible) {
+        super(marca, modelo, velocidad)
+        this.#combustible = combustible;
+    }
+
+    acelerar() {
+        return parseFloat(this.getVelocidad) + 20 + " Km/h <br>";
+    }
+}
 
 
 
+
+
+
+let ejercicio5 = async() =>{
+    let resultDiv = document.querySelector("#resultDiv");
+
+    let marca = document.querySelector("#marca").value;
+    let modelo = document.querySelector("#modelo").value;
+    let velocidad = document.querySelector("#velocidad").value;
+    let combustible = document.querySelector("#combustible").value;
+
+    let vehiculo1 = new Vehiculo(marca, modelo, velocidad);
+    let coche1 = new Coche(marca, modelo, velocidad, combustible);
+
+    resultDiv.innerHTML = "";
+    resultDiv.innerHTML += vehiculo1.acelerar();
+    resultDiv.innerHTML += coche1.acelerar();
+    resultDiv.innerHTML += vehiculo1.convertirKmHEnMph();
+
+    console.log(vehiculo1);
+    console.log(coche1);
+
+}
+document.ejercicio5 = ejercicio5;
 
 let ejercicio4 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
@@ -218,6 +297,9 @@ let ejercicio4 = async() =>{
     resultDiv.innerHTML = "";
     resultDiv.innerHTML += `${figura1.calcularArea()}<br>`;
     resultDiv.innerHTML += `${rectangulo1.calcularArea()}<br>`;
+
+    console.log(figura1);
+    console.log(rectangulo1);
 }
 document.ejercicio4 = ejercicio4;
 
@@ -232,6 +314,9 @@ let ejercicio3 = async() =>{
 
     resultDiv.innerHTML = "";
     resultDiv.innerHTML += `${circulo1.calcularArea()}<br>`;
+
+    console.log(figura1);
+    console.log(circulo1);
 }
 
 document.ejercicio3 = ejercicio3;
@@ -249,6 +334,9 @@ let ejercicio2 = async() =>{
     resultDiv.innerHTML += animal1.saludar();
     resultDiv.innerHTML += animal1.getSonido;
     resultDiv.innerHTML += raza1.moverCola();
+
+    console.log(animal1);
+    console.log(raza1);
 }
 
 document.ejercicio2 = ejercicio2;
@@ -267,6 +355,9 @@ let ejercicio1 = async() =>{
     resultDiv.innerHTML += persona1.saludar();
     resultDiv.innerHTML += estudiante1.estudiar();
     resultDiv.innerHTML += `¿Mayor de edad?: ${estudiante1.esMayorEdad}<br>`;
+
+    console.log(persona1);
+    console.log(estudiante1);
 }
 document.ejercicio1 = ejercicio1;
 
