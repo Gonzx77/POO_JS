@@ -111,6 +111,23 @@ let openEjercicio6 = async() =>{
 }
 document.openEjercicio6 = openEjercicio6;
 
+let openEjercicio7 = async() =>{
+    let plantilla = `
+    <div class="formularioDiv">
+        <h1 id="title">Formulario</h1>
+        <input id="nombre" class="inputText" type="text" placeholder="Nombre...">
+        <input id="fuerza" class="inputText" type="number" placeholder="Fuerza...">
+
+        <button onclick="ejercicio7()" id="btn">Registrar</button>
+    </div>
+    <div id="resultDiv">
+        
+    </div>`;
+
+    formulario.innerHTML = plantilla;
+}
+document.openEjercicio7 = openEjercicio7;
+
 
 
 
@@ -323,10 +340,53 @@ class Gerente extends Empleado{
 }
 
 
+class Personaje{
+    #nombre;
+    #fuerza;
+
+    constructor(nombre, fuerza){
+        this.#nombre = nombre;
+        this.#fuerza = fuerza;
+    }
+
+    get getFuerza(){
+        return parseFloat(this.#fuerza);
+    }
+
+    presentar(){
+        return `Mi nombre es ${this.#nombre} y tengo ${this.#fuerza} de fuerza <br>`;
+    }
+}
+class Jedi extends Personaje{
+    constructor(nombre, fuerza){
+        super(nombre, fuerza)
+    }
+
+    usarFuerza(){
+        return `El Jedi esta usando su fuerza para proteger la galaxia<br>- Fuerza: ${this.getFuerza} <br>`;
+    }
+}
 
 
 
 
+
+
+
+let ejercicio7 = async() =>{
+    let resultDiv = document.querySelector("#resultDiv");
+
+    let nombre = document.querySelector("#nombre").value;
+    let fuerza = document.querySelector("#fuerza").value;
+
+    let personaje1 = new Personaje(nombre, fuerza);
+    let jedi1 = new Jedi(nombre, fuerza);
+
+    resultDiv.innerHTML = "";
+    resultDiv.innerHTML += personaje1.presentar();
+    resultDiv.innerHTML += jedi1.usarFuerza();
+}
+document.ejercicio7 = ejercicio7;
 
 let ejercicio6 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
