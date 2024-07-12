@@ -92,6 +92,25 @@ let openEjercicio5 = async() =>{
 }
 document.openEjercicio5 = openEjercicio5;
 
+let openEjercicio6 = async() =>{
+    let plantilla = `
+    <div class="formularioDiv">
+        <h1 id="title">Formulario</h1>
+        <input id="nombre" class="inputText" type="text" placeholder="Nombre...">
+        <input id="edad" class="inputText" type="number" placeholder="Edad...">
+        <input id="sueldo" class="inputText" type="number" placeholder="Sueldo...">
+        <input id="departamento" class="inputText" type="text" placeholder="Departamento...">
+
+        <button onclick="ejercicio6()" id="btn">Registrar</button>
+    </div>
+    <div id="resultDiv">
+        
+    </div>`;
+
+    formulario.innerHTML = plantilla;
+}
+document.openEjercicio6 = openEjercicio6;
+
 
 
 
@@ -164,7 +183,7 @@ class Animal{
         return `Hola ${this.#nombre}<br>`;
     }
 }
-class Raza extends Animal {
+class Raza extends Animal{
     #raza;
 
     constructor(nombre, edad, raza) {
@@ -206,7 +225,7 @@ class Persona{
         return `Hola ${this.#nombre}<br>`;
     }
 }
-class Estudiante extends Persona {
+class Estudiante extends Persona{
     #carrera;
 
     constructor(nombre, edad, sexo, carrera) {
@@ -244,7 +263,7 @@ class Vehiculo{
         return `${kmh} Km/h = ${mph} MPH <br>`;
     }
 }
-class Coche extends Vehiculo {
+class Coche extends Vehiculo{
     #combustible;
 
     constructor(marca, modelo, velocidad, combustible) {
@@ -258,9 +277,75 @@ class Coche extends Vehiculo {
 }
 
 
+let id = 0;
+class Empleado{
+    #nombre;
+    #edad;
+    #sueldo;
+    #id;
+
+    constructor(nombre, edad, sueldo){
+        this.#nombre = nombre;
+        this.#edad = edad;
+        this.#sueldo = sueldo;
+    }
+
+    get getSueldo(){
+        return parseInt(this.#sueldo);
+    }
+
+    get getIdEmpleado(){
+        id++;
+        return `El ID del empleado es: ${id} <br>`;
+    }
+
+    calcularSalarioAnual(){
+        let sueldo = parseFloat(this.#sueldo);
+        let salario = sueldo * 12;
+        return `El salario es de (${sueldo}·12) = ${salario} <br>`;
+    }
+}
+class Gerente extends Empleado{
+    #departamento;
+
+    constructor(nombre, edad, salario, departamento){
+        super(nombre, edad, salario)
+        this.#departamento = departamento;
+    }
+
+    calcularSalarioAnual(){
+        let sueldo = this.getSueldo;
+        let salario = (((sueldo / 100) * 10) + sueldo);
+        salario = salario * 12;
+
+        return `El salario es de ((${sueldo} + 10%) · 12) = ${salario} <br>`;
+    }
+}
 
 
 
+
+
+
+
+let ejercicio6 = async() =>{
+    let resultDiv = document.querySelector("#resultDiv");
+
+    let nombre = document.querySelector("#nombre").value;
+    let edad = document.querySelector("#edad").value;
+    let sueldo = document.querySelector("#sueldo").value;
+    let departamento = document.querySelector("#departamento").value;
+
+    let empleado1 = new Empleado(nombre, edad, sueldo);
+    let gerente1 = new Gerente(nombre, edad, sueldo, departamento)
+
+    resultDiv.innerHTML = "";
+    resultDiv.innerHTML += empleado1.calcularSalarioAnual();
+    resultDiv.innerHTML += gerente1.calcularSalarioAnual();
+    resultDiv.innerHTML += empleado1.getIdEmpleado;
+
+}
+document.ejercicio6 = ejercicio6;
 
 let ejercicio5 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
@@ -318,8 +403,8 @@ let ejercicio3 = async() =>{
     console.log(figura1);
     console.log(circulo1);
 }
-
 document.ejercicio3 = ejercicio3;
+
 let ejercicio2 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
 
@@ -338,8 +423,8 @@ let ejercicio2 = async() =>{
     console.log(animal1);
     console.log(raza1);
 }
-
 document.ejercicio2 = ejercicio2;
+
 let ejercicio1 = async() =>{
     let resultDiv = document.querySelector("#resultDiv");
 
